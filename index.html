@@ -1,740 +1,567 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="color-scheme" content="light">
-<title>Taller de Fotografía Móvil · Encuentros — Amapola</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una idea, cinco fotos · Eje Intención · Taller de Fotografía Móvil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg:#f1e7d9;
+    --card:#faf4ea;
+    --card-2:#f6eee1;
+    --terracota:#c8462a;
+    --terracota-soft:#e9c9bd;
+    --ink:#2b211b;
+    --ink-soft:#6f6256;
+    --ink-faint:#8a7d70;
+    --dark:#271f1a;
+    --dark-soft:#9b8d7f;
+    --line:rgba(43,33,27,.10);
+    --line-strong:rgba(43,33,27,.16);
+    --serif:'Spectral',Georgia,serif;
+    --sans:'Archivo',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:96px;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px;}
 
-/* ============================================================
-   TALLER DE FOTOGRAFÍA MÓVIL · ENCUENTROS
-   Estética cálida · terracota fuerte sobre crema · editorial
-   Distinta de la web (que es blanco + Fraunces + marrón suave)
-   ============================================================ */
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-:root{
-  --bg:#f4ece1;
-  --bg-deep:#ece0d0;
-  --paper:#fbf6ee;
-  --ink:#241a14;
-  --ink-soft:#4a3a2e;
-  --ink-mute:#8a7866;
-  --line:#e0d2bf;
-  --line-soft:#ece1d1;
-  /* acento fuerte: terracota / cinabrio */
-  --accent:#c8462a;
-  --accent-deep:#a3361f;
-  --accent-soft:#e89072;
-  --gold:#b98a3e;
-  --dark:#241a14;
-  --on-dark:#f4ece1;
-  --on-dark-mute:#b8a48f;
-  --nav-h:70px;
-  --maxw:680px;
-  --r:16px;
-}
+  /* ---------- Header ---------- */
+  .appbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(241,231,217,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .appbar-inner{
+    max-width:680px;margin:0 auto;padding:16px 22px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo{
+    width:54px;height:54px;flex:none;border-radius:14px;
+    background:var(--terracota);color:var(--card);
+    font-family:var(--serif);font-size:30px;font-weight:500;
+    display:grid;place-items:center;
+    box-shadow:0 6px 16px rgba(200,70,42,.22);
+  }
+  .appbar h1{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.1;margin:0;}
+  .appbar .kicker{
+    font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.16em;
+    color:var(--terracota);text-transform:uppercase;margin-top:3px;
+  }
 
-html{font-size:16px;-webkit-text-size-adjust:100%;}
-body{
-  font-family:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
-  background:var(--bg);
-  background-image:radial-gradient(circle at 18% -8%, #f8efe2 0%, transparent 46%),
-                   radial-gradient(circle at 92% 4%, #efe2d0 0%, transparent 40%);
-  background-attachment:fixed;
-  color:var(--ink);
-  line-height:1.65;
-  letter-spacing:-0.005em;
-  -webkit-font-smoothing:antialiased;
-  padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom) + 20px);
-  min-height:100vh;
-}
-h1,h2,h3,.serif{font-family:'Spectral','Georgia',serif;}
-a{color:inherit;text-decoration:none;}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  /* ---------- Chapters nav ---------- */
+  .chapters-nav{padding:18px 0 0;margin-bottom:8px;border-bottom:1px solid var(--line);}
+  .chapters-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracota);margin-bottom:12px;}
+  .chapters-list{display:flex;gap:8px;flex-wrap:wrap;}
+  .chapter-link{
+    font-family:var(--sans);font-weight:500;font-size:14px;
+    padding:8px 16px;border-radius:999px;border:1px solid var(--line);
+    color:var(--ink-soft);text-decoration:none;transition:all .2s ease;
+  }
+  .chapter-link:hover{border-color:var(--terracota-soft);color:var(--terracota);}
+  .chapter-link.active{
+    background:var(--terracota);color:var(--card);border-color:var(--terracota);font-weight:600;
+  }
 
-/* HEADER */
-.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--line);}
-.hdr-inner{max-width:var(--maxw);margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;}
-.brand{display:flex;align-items:center;gap:11px;cursor:pointer;}
-.brand-dot{width:34px;height:34px;background:var(--accent);border-radius:10px 10px 10px 3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px -4px rgba(200,70,42,.5);}
-.brand-dot span{color:#fff;font-weight:600;font-size:17px;font-family:'Spectral',serif;line-height:1;}
-.brand-tx{line-height:1.25;}
-.brand-name{font-size:15px;font-weight:500;letter-spacing:-0.01em;color:var(--ink);font-family:'Spectral',serif;}
-.brand-sub{font-size:9.5px;color:var(--accent);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
+  /* ---------- Hero ---------- */
+  .hero{padding:40px 0 8px;}
+  .eyebrow{
+    font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--terracota);margin-bottom:18px;
+  }
+  .hero h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(40px,11vw,58px);
+    line-height:1.02;margin:0 0 22px;letter-spacing:-.01em;color:var(--terracota);
+  }
+  .hero h2 em{font-style:italic;color:var(--terracota);}
+  .lead{font-size:19px;color:var(--terracota);line-height:1.6;margin:0;}
+  .lead em{font-style:italic;color:var(--ink);}
 
-/* SCREENS */
-.screen{display:none;}
-.screen.active{display:block;animation:fadeup .32s ease;}
-@keyframes fadeup{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .tagrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .tag{
+    font-family:var(--sans);font-weight:500;font-size:14px;
+    padding:8px 18px;border-radius:999px;border:1px solid var(--line-strong);
+    color:var(--ink-soft);background:transparent;
+  }
+  .tag.solid{background:var(--terracota);color:var(--card);border-color:transparent;font-weight:600;}
 
-/* HERO */
-.hero{padding:42px 0 26px;}
-.hero-kick{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);margin-bottom:18px;padding:7px 14px;border:1.5px solid var(--accent);border-radius:100px;}
-.hero h1{font-size:clamp(38px,10vw,60px);font-weight:400;line-height:0.98;letter-spacing:-0.02em;color:var(--ink);}
-.hero h1 em{font-style:italic;color:var(--accent);}
-.hero p{margin-top:20px;font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:42ch;}
-.hero-meta{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;}
-.hero-chip{font-size:11px;font-weight:600;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);padding:8px 14px;border-radius:100px;letter-spacing:0.01em;}
-.hero-chip b{color:var(--accent);}
+  /* ---------- Sections ---------- */
+  section{padding:34px 0;}
+  .sec-label{
+    font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--terracota);margin-bottom:14px;
+  }
+  h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.12;margin:0 0 16px;color:var(--terracota);}
+  h3 em{font-style:italic;color:var(--terracota);}
+  strong{font-weight:600;color:var(--terracota);}
 
-/* INTRO NOTE */
-.intro-note{background:var(--dark);color:var(--on-dark);border-radius:var(--r);padding:24px 22px;margin:6px 0 8px;position:relative;overflow:hidden;}
-.intro-note::after{content:'';position:absolute;right:-30px;top:-30px;width:120px;height:120px;border:1.5px solid rgba(244,236,225,.12);border-radius:50%;}
-.intro-note-t{font-family:'Spectral',serif;font-size:18px;font-weight:500;margin-bottom:9px;color:#fff;font-style:italic;}
-.intro-note-d{font-size:14px;color:var(--on-dark-mute);line-height:1.65;position:relative;z-index:1;}
+  /* ---------- Rule card (mostrar no nombrar) ---------- */
+  .rule{
+    background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:30px 28px;position:relative;overflow:hidden;
+  }
+  .rule::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--terracota);
+  }
+  .rule .big{font-family:var(--serif);font-size:26px;line-height:1.2;margin:0 0 14px;color:var(--terracota);}
+  .rule .big em{font-style:italic;color:var(--terracota);}
 
-/* ENCUENTRO CARDS (home) */
-.enc-list{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
-.enc-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px;cursor:pointer;transition:.2s;position:relative;overflow:hidden;}
-.enc-card:active{transform:scale(.99);}
-.enc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .25s;}
-.enc-card:hover::before{transform:scaleY(1);}
-.enc-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px;}
-.enc-num{font-family:'Spectral',serif;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;}
-.enc-eje{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-mute);background:var(--bg-deep);padding:5px 11px;border-radius:100px;white-space:nowrap;}
-.enc-card h2{font-family:'Spectral',serif;font-size:25px;font-weight:500;line-height:1.12;letter-spacing:-0.015em;color:var(--ink);margin-bottom:8px;}
-.enc-card-d{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:16px;}
-.enc-card-foot{display:flex;align-items:center;gap:12px;font-size:11.5px;color:var(--ink-mute);font-weight:600;border-top:1px solid var(--line-soft);padding-top:14px;}
-.enc-card-foot .go{margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700;}
-.enc-card-foot .go svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;}
+  /* ---------- Repaso ---------- */
+  .repaso{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 24px;}
+  .block + .block{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);}
+  .block-label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracota);margin-bottom:14px;}
+  .qs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .q{background:var(--card-2);border:1px solid var(--line);border-radius:16px;padding:16px 15px;}
+  .qword{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--terracota);line-height:1;margin-bottom:10px;}
+  .q p{font-size:14px;color:var(--terracota);margin:0;line-height:1.45;}
+  .recursos div{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--line);}
+  .recursos div:first-child{border-top:none;}
+  .recursos b{font-family:var(--serif);font-weight:600;font-size:16.5px;color:var(--ink);}
+  .recursos span{font-size:14.5px;color:var(--terracota);}
+  .story{font-size:16.5px;color:var(--terracota);margin:0;line-height:1.55;}
+  .story em{font-style:italic;color:var(--ink);}
 
-/* ENCUENTRO HEADER (dentro de un encuentro) */
-.eh{padding:38px 0 8px;}
-.eh-back{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--ink-mute);margin-bottom:22px;cursor:pointer;transition:.15s;}
-.eh-back svg{width:15px;height:15px;stroke:var(--ink-mute);fill:none;stroke-width:2;}
-.eh-back:active{transform:translateX(-2px);}
-.eh-kick{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent);margin-bottom:10px;}
-.eh h1{font-family:'Spectral',serif;font-size:clamp(30px,8vw,44px);font-weight:400;line-height:1.02;letter-spacing:-0.02em;color:var(--ink);}
-.eh h1 em{font-style:italic;color:var(--accent);}
-.eh-d{margin-top:14px;font-size:15px;color:var(--ink-soft);line-height:1.6;}
-.eh-meta{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;}
-.eh-meta .hero-chip{background:transparent;}
+  /* ---------- Consigna helpers ---------- */
+  .micro-label{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:16px 0 9px;}
+  .preguntate{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-strong);font-family:var(--serif);font-style:italic;font-size:16px;color:var(--terracota);line-height:1.35;}
 
-/* SYLLABUS PEEK (lista de láminas arriba del encuentro) */
-.syll{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:8px 8px;margin:22px 0 28px;}
-.syll-row{display:flex;align-items:center;gap:13px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:.14s;}
-.syll-row:active{background:var(--bg-deep);}
-.syll-n{font-family:'Spectral',serif;font-size:13px;font-weight:600;color:var(--accent);width:22px;flex-shrink:0;}
-.syll-t{font-size:13.5px;font-weight:500;color:var(--ink-soft);flex:1;}
-.syll-row:not(:last-child){border-bottom:1px solid var(--line-soft);}
+  /* ---------- Lista de preguntas ---------- */
+  .qlist{list-style:none;padding:0;margin:6px 0 0;}
+  .qlist li{padding:15px 0;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;font-size:18px;color:var(--terracota);line-height:1.35;}
+  .qlist li:first-child{border-top:none;}
 
-/* MÓDULOS ACORDEÓN */
-.eje-tag{padding:34px 0 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--accent-deep);display:flex;align-items:center;gap:13px;}
-.eje-tag::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--accent-soft),transparent);}
+  /* ---------- Pregunta de cierre ---------- */
+  .pregunta-final{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--terracota);line-height:1.3;margin:18px 0;padding-left:18px;border-left:3px solid var(--terracota);}
 
-.mod-list{display:flex;flex-direction:column;gap:13px;}
-.mod{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:clip;transition:border-color .2s,box-shadow .2s;}
-.mod.open{border-color:var(--accent-soft);box-shadow:0 8px 30px -18px rgba(200,70,42,.4);}
-.mod-head{display:flex;align-items:center;gap:15px;padding:21px 20px;cursor:pointer;user-select:none;}
-.mod.open .mod-head{position:sticky;top:62px;z-index:20;background:color-mix(in srgb,var(--paper) 95%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
-.mod-num{font-family:'Spectral',serif;font-size:15px;font-weight:600;color:#fff;background:var(--accent);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:0;line-height:1;}
-.mod.open .mod-num{background:var(--accent-deep);}
-.mod-info{flex:1;min-width:0;}
-.mod-name{font-family:'Spectral',serif;font-size:19px;font-weight:500;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);}
-.mod-desc{font-size:12px;color:var(--ink-mute);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500;}
-.mod-toggle{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);position:relative;flex-shrink:0;transition:.25s;}
-.mod.open .mod-toggle{background:var(--accent);border-color:var(--accent);transform:rotate(180deg);}
-.mod-toggle::before,.mod-toggle::after{content:'';position:absolute;background:var(--ink-mute);transition:transform .25s ease,opacity .25s,background .25s;}
-.mod-toggle::before{top:50%;left:7px;right:7px;height:1.6px;transform:translateY(-50%);}
-.mod-toggle::after{left:50%;top:7px;bottom:7px;width:1.6px;transform:translateX(-50%);}
-.mod.open .mod-toggle::before,.mod.open .mod-toggle::after{background:#fff;}
-.mod.open .mod-toggle::after{opacity:0;}
-.mod-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.4,0,.2,1);}
-.mod.open .mod-body{max-height:90000px;}
-.mod-inner{padding:4px 20px 12px;}
+  /* ---------- Steps ---------- */
+  .steps{list-style:none;padding:0;margin:6px 0 0;counter-reset:s;}
+  .steps li{
+    position:relative;padding:18px 0 18px 58px;border-top:1px solid var(--line);
+  }
+  .steps li:first-child{border-top:none;}
+  .steps li::before{
+    counter-increment:s;content:counter(s,decimal-leading-zero);
+    position:absolute;left:0;top:16px;
+    font-family:var(--serif);font-size:18px;color:var(--terracota);font-weight:600;
+    width:38px;text-align:left;
+  }
+  .steps strong{font-weight:600;color:var(--terracota);}
+  .steps .sub{display:block;color:var(--terracota);font-size:15.5px;margin-top:2px;}
 
-/* TOPICS */
-.topic{border-top:1px solid var(--line-soft);}
-.topic-head{display:flex;align-items:center;gap:12px;padding:17px 0;cursor:pointer;user-select:none;}
-.topic-dot{width:6px;height:6px;border-radius:2px;background:var(--accent);flex-shrink:0;transform:rotate(45deg);opacity:.7;}
-.topic-title{flex:1;font-size:15px;font-weight:600;color:var(--ink-soft);letter-spacing:-0.005em;transition:.15s;}
-.topic.open .topic-title{color:var(--accent-deep);}
-.topic-chev{width:15px;height:15px;stroke:var(--ink-mute);fill:none;flex-shrink:0;transition:transform .25s;stroke-width:2;}
-.topic.open .topic-chev{transform:rotate(180deg);stroke:var(--accent);}
-.topic-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1);}
-.topic.open .topic-body{max-height:30000px;}
-.topic-content{padding:4px 0 26px;font-size:15px;color:var(--ink-soft);line-height:1.74;}
+  /* ---------- Consignas (accordion) ---------- */
+  .consignas{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+  .acc{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    transition:border-color .2s ease;
+  }
+  .acc[open]{border-color:var(--line-strong);}
+  .acc summary{
+    list-style:none;cursor:pointer;padding:18px 20px;
+    display:flex;align-items:center;gap:16px;user-select:none;
+  }
+  .acc summary::-webkit-details-marker{display:none;}
+  .num{
+    width:44px;height:44px;flex:none;border-radius:12px;background:var(--terracota);
+    color:var(--card);font-family:var(--serif);font-weight:500;font-size:18px;
+    display:grid;place-items:center;
+  }
+  .acc .ttl{flex:1;}
+  .acc .ttl b{font-family:var(--serif);font-weight:500;font-size:21px;display:block;line-height:1.15;}
+  .acc .ttl span{font-size:14.5px;color:var(--terracota);display:block;margin-top:2px;}
+  .chev{
+    width:30px;height:30px;flex:none;border-radius:50%;border:1px solid var(--line-strong);
+    display:grid;place-items:center;color:var(--ink-faint);transition:transform .25s ease;
+    font-size:18px;line-height:1;
+  }
+  .acc[open] .chev{transform:rotate(45deg);color:var(--terracota);border-color:var(--terracota-soft);}
+  .acc-body{padding:0 20px 20px 80px;}
+  .acc-body p{font-size:15.5px;color:var(--terracota);margin:0 0 12px;}
+  .pistas{display:flex;flex-wrap:wrap;gap:8px;}
+  .pista{
+    font-size:13.5px;color:var(--ink);background:var(--card-2);
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px;
+  }
 
-/* RICH CONTENT */
-.tp{margin:11px 0;}
-.topic-content strong{color:var(--ink);font-weight:700;}
-.topic-content em{font-style:italic;color:var(--ink-soft);}
-.box{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:16px 18px;margin:17px 0;font-size:14px;}
-.box-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-deep);margin-bottom:8px;}
-.box-d{color:var(--ink-soft);line-height:1.66;}
-.tl{margin:11px 0;padding-left:20px;}
-.tl li{margin:8px 0;color:var(--ink-soft);}
-.tl li::marker{color:var(--accent);}
+  /* ---------- Highlight (recommendation) ---------- */
+  .reco{
+    background:var(--card-2);border:1px solid var(--line);border-radius:22px;padding:28px;
+  }
+  .reco h3{font-size:26px;}
 
-/* EJERCICIO — bloque destacado de práctica */
-.ej{background:linear-gradient(170deg,#fbf2e8,#f6e9d8);border:1px solid var(--accent-soft);border-radius:14px;padding:20px;margin:20px 0;position:relative;overflow:hidden;}
-.ej::before{content:'✦';position:absolute;right:16px;top:14px;font-size:20px;color:var(--accent-soft);}
-.ej-tag{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:#fff;background:var(--accent);padding:6px 12px;border-radius:100px;margin-bottom:13px;}
-.ej-t{font-family:'Spectral',serif;font-size:17px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.25;}
-.ej-steps{counter-reset:ej;list-style:none;padding:0;margin:10px 0 0;}
-.ej-steps li{position:relative;padding-left:34px;margin:11px 0;font-size:14px;color:var(--ink-soft);line-height:1.55;counter-increment:ej;}
-.ej-steps li::before{content:counter(ej);position:absolute;left:0;top:-1px;width:23px;height:23px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Archivo',sans-serif;}
-.ej-q{margin-top:14px;padding-top:13px;border-top:1px dashed var(--accent-soft);font-size:13.5px;color:var(--accent-deep);font-weight:600;font-style:italic;}
+  /* ---------- Titles list ---------- */
+  .titles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+  .title-chip{
+    font-family:var(--serif);font-size:17px;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;line-height:1.25;
+  }
+  .title-chip em{font-style:italic;color:var(--terracota);}
 
-/* WEB LINK — referencia a la plataforma */
-.weblink{display:flex;align-items:center;gap:11px;background:var(--dark);color:var(--on-dark);border-radius:12px;padding:14px 16px;margin:18px 0;font-size:12.5px;}
-.weblink svg{width:18px;height:18px;stroke:var(--accent-soft);fill:none;stroke-width:1.8;flex-shrink:0;}
-.weblink b{color:#fff;font-weight:600;}
-.weblink span{color:var(--on-dark-mute);}
+  /* ---------- Tiempos ---------- */
+  .tiempos{list-style:none;padding:0;margin:6px 0 0;}
+  .tiempos li{
+    display:flex;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid var(--line);
+  }
+  .tiempos li:first-child{border-top:none;}
+  .tiempos .t{
+    font-family:var(--serif);font-weight:600;color:var(--terracota);
+    font-size:16px;flex:none;width:62px;
+  }
+  .tiempos .d{color:var(--ink);}
 
-/* TABLE */
-.tbl{width:100%;border-collapse:separate;border-spacing:0;margin:17px 0;font-size:13px;border:1px solid var(--line);border-radius:11px;overflow:hidden;}
-.tbl th{background:var(--dark);color:var(--on-dark);padding:10px 12px;text-align:left;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;}
-.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink-soft);vertical-align:top;background:var(--paper);}
-.tbl tr:last-child td{border-bottom:none;}
-.tbl td strong{color:var(--accent-deep);}
+  /* ---------- Dark closing card ---------- */
+  .cierre{
+    background:var(--dark);color:var(--card);border-radius:26px;
+    padding:42px 30px;position:relative;overflow:hidden;margin-top:8px;
+  }
+  .cierre .rings{
+    position:absolute;right:-60px;bottom:-70px;width:260px;height:260px;
+    border-radius:50%;opacity:.5;pointer-events:none;
+    background:
+      radial-gradient(circle, transparent 38%, rgba(255,255,255,.06) 38.5%, rgba(255,255,255,.06) 40%, transparent 40.5%),
+      radial-gradient(circle, transparent 58%, rgba(255,255,255,.05) 58.5%, rgba(255,255,255,.05) 60%, transparent 60.5%),
+      radial-gradient(circle, transparent 78%, rgba(255,255,255,.04) 78.5%, rgba(255,255,255,.04) 80%, transparent 80.5%);
+  }
+  .cierre .eyebrow{color:var(--terracota);position:relative;}
+  .cierre .quote{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(28px,7vw,36px);line-height:1.18;margin:0 0 22px;position:relative;
+  }
+  .cierre p{color:var(--dark-soft);position:relative;font-size:16.5px;}
+  .cierre p em{color:var(--card);font-style:italic;}
 
-/* CIERRE */
-.cierre{background:var(--dark);color:var(--on-dark);border-radius:var(--r);padding:28px 24px;margin:30px 0 10px;position:relative;overflow:hidden;}
-.cierre::after{content:'';position:absolute;left:-40px;bottom:-40px;width:150px;height:150px;border:1.5px solid rgba(244,236,225,.1);border-radius:50%;}
-.cierre-kick{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--accent-soft);margin-bottom:12px;}
-.cierre h3{font-family:'Spectral',serif;font-size:22px;font-weight:500;font-style:italic;color:#fff;line-height:1.2;margin-bottom:12px;position:relative;z-index:1;}
-.cierre p{font-size:14px;color:var(--on-dark-mute);line-height:1.7;position:relative;z-index:1;}
+  /* ---------- Back link ---------- */
+  .back{
+    display:inline-flex;align-items:center;gap:10px;margin-top:30px;
+    font-family:var(--sans);font-weight:600;font-size:15px;color:var(--terracota);
+    text-decoration:none;padding:13px 22px;border:1px solid var(--terracota-soft);
+    border-radius:999px;background:var(--card);transition:background .2s ease;
+  }
+  .back:hover{background:var(--card-2);}
+  .back svg{width:16px;height:16px;}
 
-/* CONTACTO */
-.contact-card{background:var(--accent);color:#fff;border-radius:20px;padding:32px 26px;margin-bottom:24px;position:relative;overflow:hidden;}
-.contact-card::after{content:'';position:absolute;right:-50px;top:-50px;width:160px;height:160px;border:2px solid rgba(255,255,255,.15);border-radius:50%;}
-.contact-card h2{font-family:'Spectral',serif;font-size:27px;font-weight:500;font-style:italic;letter-spacing:-0.01em;line-height:1.1;margin-bottom:12px;position:relative;z-index:1;}
-.contact-card p{font-size:14px;color:rgba(255,255,255,.88);line-height:1.7;position:relative;z-index:1;}
-.clinks{margin-top:24px;display:flex;flex-direction:column;position:relative;z-index:1;}
-.clink{display:flex;align-items:center;gap:15px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);color:#fff;transition:.15s;}
-.clink:last-child{border-bottom:1px solid rgba(255,255,255,.18);}
-.clink:active{opacity:.7;}
-.clink-ic{width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.clink-tx{flex:1;}
-.clink-tx b{display:block;font-size:15px;font-weight:600;}
-.clink-tx span{font-size:12px;color:rgba(255,255,255,.78);}
-.clink svg.arr{width:15px;height:15px;stroke:rgba(255,255,255,.7);fill:none;stroke-width:2;}
-.about-sec{padding:0 2px;}
-.about-sec h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin-bottom:14px;}
-.about-sec p{font-size:15px;color:var(--ink-soft);line-height:1.75;}
+  /* ---------- Bottom nav ---------- */
+  .nav{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(241,231,217,.94);backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+  }
+  .nav-inner{max-width:680px;margin:0 auto;display:flex;padding:8px 6px;}
+  .nav a{
+    flex:1;text-decoration:none;color:var(--ink-faint);
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    font-family:var(--sans);font-size:12px;font-weight:500;padding:6px 0;
+  }
+  .nav a.active{color:var(--terracota);font-weight:600;}
+  .nav svg{width:24px;height:24px;}
 
-/* FOOTER */
-.foot{background:var(--dark);margin-top:46px;}
-.foot-inner{max-width:var(--maxw);margin:0 auto;padding:38px 22px calc(38px + env(safe-area-inset-bottom));}
-.foot-brand{font-family:'Spectral',serif;font-size:30px;font-weight:500;font-style:italic;color:#fff;letter-spacing:-0.01em;}
-.foot-sub{font-size:13px;color:var(--on-dark-mute);margin-top:9px;}
-.foot-copy{font-size:11px;color:#6b5848;margin-top:24px;}
+  /* ---------- Motion / a11y ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;scroll-behavior:auto!important;}
+  }
+  a:focus-visible, summary:focus-visible{outline:2px solid var(--terracota);outline-offset:3px;border-radius:6px;}
 
-/* NAV */
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
-.nav-inner{max-width:var(--maxw);margin:0 auto;height:var(--nav-h);display:grid;grid-template-columns:repeat(5,1fr);}
-.ni{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:none;background:none;cursor:pointer;color:var(--ink-mute);font:inherit;transition:.16s;padding:0;}
-.ni svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;transition:.16s;}
-.ni span{font-size:10px;font-weight:600;letter-spacing:0.01em;}
-.ni.on{color:var(--accent);}
-.ni.on svg{stroke-width:2.2;}
-.ni:active{transform:scale(.9);}
+  @media (max-width:480px){
+    body{font-size:16px;}
+    .titles{grid-template-columns:1fr;}
+    .qs{grid-template-columns:1fr;}
+    .acc-body{padding-left:20px;}
+  }
 
-@media(min-width:720px){
-  .hero h1{font-size:64px;}
-}
-
+  /* ---------- Print (para imprimir y recortar consignas) ---------- */
+  @media print{
+    body{background:#fff;padding:0;font-size:12pt;}
+    .appbar,.nav,.back,.cierre .rings{display:none!important;}
+    .acc[open],.acc{border:1px solid #ccc!important;break-inside:avoid;}
+    .acc summary{cursor:default;}
+    .acc-body{display:block!important;}
+    details{ }
+  }
 </style>
 </head>
 <body>
 
-<header class="hdr">
-  <div class="hdr-inner">
-    <div class="brand" onclick="go('home')">
-      <div class="brand-dot"><span>A</span></div>
-      <div class="brand-tx">
-        <div class="brand-name">Taller de Fotografía Móvil</div>
-        <div class="brand-sub">Amapola · Encuentros</div>
+  <!-- ====== Header (igual a la app) ====== -->
+  <header class="appbar">
+    <div class="appbar-inner">
+      <div class="logo">A</div>
+      <div>
+        <h1>Taller de Fotografía Móvil</h1>
+        <div class="kicker">Amapola · Encuentros</div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="wrap">
+  <main class="wrap">
 
-  <!-- ════════════════ HOME ════════════════ -->
-  <section class="screen active" id="s-home">
-    <div class="hero">
-      <span class="hero-kick">Plan de clases</span>
-      <h1>Aprender<br>a <em>mirar</em></h1>
-      <p>Tres encuentros para empezar a ver con intención usando solo tu celular. Cada clase sigue la misma línea que tu plataforma La Mirada Fotográfica.</p>
-      <div class="hero-meta">
-        <span class="hero-chip"><b>3</b> encuentros</span>
-        <span class="hero-chip"><b>2 h</b> cada uno</span>
-        <span class="hero-chip">iPhone · Android</span>
-        <span class="hero-chip">Teoría + práctica</span>
+    <!-- ====== Navegación entre capítulos ====== -->
+    <section class="chapters-nav">
+      <div class="chapters-label">Capítulos del taller</div>
+      <div class="chapters-list">
+        <a href="luz.html" class="chapter-link">Luz natural</a>
+        <a href="encuadre.html" class="chapter-link">Encuadre</a>
+        <a href="intencion-salida.html" class="chapter-link active" aria-current="page">Intención</a>
       </div>
-    </div>
+    </section>
 
-    <div class="intro-note">
-      <div class="intro-note-t">¿Qué? · ¿Cómo? · ¿Para qué?</div>
-      <div class="intro-note-d">Antes de cada foto vamos a responder estas tres preguntas. Qué quiero mostrar, cómo lo voy a mostrar y para qué. Es el método que ordena todo el taller y que vas a poder seguir después en la app.</div>
-    </div>
-
-    <div class="enc-list">
-      <div class="enc-card" onclick="go('e1')">
-        <div class="enc-card-top">
-          <div class="enc-num">Encuentro 01</div>
-          <div class="enc-eje">Eje · Luz</div>
-        </div>
-        <h2>La luz y la mirada</h2>
-        <div class="enc-card-d">Mirar antes de disparar. Reconocer la luz, su dirección y su calidad. Preparar el celular y controlar el enfoque y la exposición.</div>
-        <div class="enc-card-foot">
-          6 láminas
-          <span class="go">Abrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
+  <!-- ====== Hero ====== -->
+    <section class="hero">
+      <div class="eyebrow">Encuentro 03 · Eje Intención</div>
+      <h2>Contá con <em>intención</em></h2>
+      <p class="lead">Una foto no empieza cuando apretás el botón. Empieza un segundo antes, cuando decidís qué querés contar. Ahí aparece la intención.</p>
+      <div class="tagrow">
+        <span class="tag solid">2 h</span>
+        <span class="tag">Fotografía aplicada</span>
+        <span class="tag">Storytelling</span>
       </div>
+    </section>
 
-      <div class="enc-card" onclick="go('e2')">
-        <div class="enc-card-top">
-          <div class="enc-num">Encuentro 02</div>
-          <div class="enc-eje">Eje · Encuadre</div>
-        </div>
-        <h2>Componer y encuadrar</h2>
-        <div class="enc-card-d">Qué entra y qué queda afuera. Tercios, líneas, planos, ángulos y fondos limpios. Los modos y lentes del celular al servicio de la composición.</div>
-        <div class="enc-card-foot">
-          6 láminas
-          <span class="go">Abrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </div>
+    <!-- ====== Un paso mas ====== -->
+    <section>
+      <div class="sec-label">De la luz a la intención</div>
+      <h3>Un paso <em>más</em></h3>
+      <p class="muted">En la primera clase hablamos de la luz: puede cambiar por completo una foto. En la segunda, del encuadre y la composición: cómo ordenar lo que vemos para que la imagen funcione mejor.</p>
+      <p class="muted">Hoy la cámara va a registrar lo que tenemos delante, pero la intención va a decidir qué <em>significa</em> esa imagen.</p>
+    </section>
 
-      <div class="enc-card" onclick="go('e3')">
-        <div class="enc-card-top">
-          <div class="enc-num">Encuentro 03</div>
-          <div class="enc-eje">Eje · Intención</div>
+    <!-- ====== Tres preguntas ====== -->
+    <section>
+      <div class="sec-label">Antes de cada foto</div>
+      <h3>Tres <em>preguntas</em></h3>
+      <div class="qs" style="margin-top:6px;">
+        <div class="q">
+          <div class="qword">¿Qué?</div>
+          <p>Qué quiero mostrar. El motivo, el tema, lo que entra al cuadro.</p>
         </div>
-        <h2>Contar con intención</h2>
-        <div class="enc-card-d">Retratos, lo cotidiano y storytelling. Recursos visuales, errores comunes y una serie final consciente que integra todo lo aprendido.</div>
-        <div class="enc-card-foot">
-          6 láminas
-          <span class="go">Abrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="q">
+          <div class="qword">¿Cómo?</div>
+          <p>Cómo lo voy a mostrar. La luz y la composición que ya trabajaste.</p>
+        </div>
+        <div class="q">
+          <div class="qword">¿Para qué?</div>
+          <p>Para qué hago esta foto. Qué querés decir: acá vive la intención.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════ ENCUENTRO 1 ════════════════ -->
-  <section class="screen" id="s-e1">
-    <div class="eh">
-      <div class="eh-back" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Volver a los encuentros</div>
-      <div class="eh-kick">Encuentro 01 · Eje Luz</div>
-      <h1>La luz y la <em>mirada</em></h1>
-      <div class="eh-d">No buscamos la foto perfecta. Empezamos por aprender a ver: reconocer qué tenemos delante, de dónde viene la luz y qué decisión tomamos antes de tocar el botón.</div>
-      <div class="eh-meta">
-        <span class="hero-chip"><b>2 h</b></span>
-        <span class="hero-chip">Teoría + práctica</span>
-        <span class="hero-chip">Sin edición</span>
+    <!-- ====== Storytelling ====== -->
+    <section>
+      <div class="sec-label">Storytelling</div>
+      <h3>De la foto a la <em>serie</em></h3>
+      <p class="muted">El storytelling no es solo vender un producto o contar una historia enorme. También es contar una salida, una emoción, una persona, un momento cotidiano — o una serie de cinco fotos que juntas dicen algo.</p>
+      <p class="muted">Una sola foto puede ser fuerte. Pero una serie construye una idea: dónde estás, qué está pasando, qué detalle importa, qué emoción querés dejar y con qué imagen cerrás. Por eso hoy no salimos a juntar fotos: <em>salimos a elegir mejor</em>.</p>
+    </section>
+
+    <!-- ====== Antes del ejercicio: principios ====== -->
+    <section>
+      <div class="sec-label">Antes de salir</div>
+      <h3>Lo que toda historia <em>necesita</em></h3>
+      <ol class="steps">
+        <li><strong>Una intención.</strong><span class="sub">No es "saco una foto linda", sino "quiero que esta imagen transmita calma, movimiento, ausencia, encuentro o paso del tiempo".</span></li>
+        <li><strong>Una selección.</strong><span class="sub">Contar también es descartar. No todo lo que fotografiás entra en la serie: una buena serie no acumula fotos, las ordena con sentido.</span></li>
+        <li><strong>Un punto de vista.</strong><span class="sub">Dos personas pueden fotografiar la misma calle y contar historias distintas. El cambio no está en la cámara, está en la mirada.</span></li>
+        <li><strong>Conexión entre imágenes.</strong><span class="sub">Las fotos se conectan por color, luz, tema, emoción, personaje, lugar o ritmo visual.</span></li>
+        <li><strong>Una emoción.</strong><span class="sub">Una foto técnicamente correcta puede no decir nada. Una foto simple, con intención clara, se queda en la memoria.</span></li>
+      </ol>
+    </section>
+
+    <!-- ====== Preguntas antes de salir ====== -->
+    <section>
+      <div class="sec-label">Para hacerte antes de disparar</div>
+      <h3>Cinco <em>preguntas</em></h3>
+      <ul class="qlist">
+        <li>¿Qué quiero que sienta quien vea esta foto?</li>
+        <li>¿Qué elemento es el protagonista?</li>
+        <li>¿Qué puedo dejar afuera para que la imagen sea más clara?</li>
+        <li>¿Desde dónde conviene contar esto: cerca, lejos, desde arriba, desde abajo?</li>
+        <li>¿Esta foto suma a la historia o solo está "linda"?</li>
+      </ul>
+    </section>
+
+    <!-- ====== Frase clave ====== -->
+    <section>
+      <div class="sec-label">La consigna del día</div>
+      <div class="rule">
+        <p class="big">Hoy no fotografiamos cosas. <em>Fotografiamos ideas.</em></p>
+        <p class="muted">La cámara registra lo que tenés delante. La intención decide qué significa esa imagen.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="syll" id="syll-e1"></div>
-    <div class="mod-list" id="body-e1"></div>
+    <!-- ====== El desafio + consignas ====== -->
+    <section>
+      <div class="sec-label">El desafío · Fotografiar con intención</div>
+      <h3>Las <em>consignas</em></h3>
+      <p class="muted" style="margin-bottom:20px;">Cada una recibe una consigna diferente. La misión no es fotografiar un objeto: es transmitir una idea. Sacá todas las fotos que quieras, pero al volver elegí solo <strong>3 a 5</strong> que mejor representen tu consigna. Tocá cada una para ver en qué apoyarte.</p>
 
-    <div class="cierre">
-      <div class="cierre-kick">Cierre del encuentro</div>
-      <h3>Fotografiar no es sacar una foto rápida.</h3>
-      <p>Es aprender a mirar la luz, decidir qué queremos mostrar y tocar el botón con intención. Antes de irnos, repetimos la primera foto del día aplicando todo lo visto y comparamos: ¿qué cambió cuando la decisión fue consciente?</p>
-    </div>
-  </section>
+      <div class="consignas">
 
-  <!-- ════════════════ ENCUENTRO 2 ════════════════ -->
-  <section class="screen" id="s-e2">
-    <div class="eh">
-      <div class="eh-back" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Volver a los encuentros</div>
-      <div class="eh-kick">Encuentro 02 · Eje Encuadre</div>
-      <h1>Componer y <em>encuadrar</em></h1>
-      <div class="eh-d">Una misma escena da diez fotos distintas según cómo la encuadres. Profundizamos en el uso de la cámara, los planos, los ángulos y la composición. La edición queda para más adelante: primero entrenamos la toma.</div>
-      <div class="eh-meta">
-        <span class="hero-chip"><b>2 h</b></span>
-        <span class="hero-chip">Teoría aplicada + práctica</span>
-        <span class="hero-chip">Sin edición</span>
+        <details class="acc">
+          <summary>
+            <span class="num">01</span>
+            <span class="ttl"><b>Calma</b><span>Quietud, aire, espacio para respirar.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir quietud, aire, silencio: espacio para respirar.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">espacio negativo</span><span class="pista">composiciones simples</span><span class="pista">pocos elementos</span><span class="pista">líneas horizontales</span></div>
+            <p class="preguntate">¿Qué puedo sacar de la foto para que diga más?</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="num">02</span>
+            <span class="ttl"><b>Movimiento</b><span>Acción, energía, dinamismo.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir acción, energía, dinamismo.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">líneas diagonales</span><span class="pista">punto de fuga</span><span class="pista">personas caminando</span><span class="pista">elementos entrando o saliendo del cuadro</span></div>
+            <p class="preguntate">¿Cómo hago para que el ojo se mueva dentro de la imagen?</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="num">03</span>
+            <span class="ttl"><b>Soledad</b><span>Ausencia, distancia, introspección.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir ausencia, distancia, introspección.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">sujetos pequeños en el encuadre</span><span class="pista">mucho espacio alrededor</span><span class="pista">espacio negativo</span><span class="pista">ley de la mirada</span></div>
+            <p class="preguntate">¿Cómo puedo hacer que algo parezca aislado?</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="num">04</span>
+            <span class="ttl"><b>Encuentro</b><span>Conexión, relación, compañía.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir conexión, relación, compañía.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">peso y contrapeso</span><span class="pista">dos elementos dialogando</span><span class="pista">marcos naturales</span><span class="pista">proximidad entre sujetos</span></div>
+            <p class="preguntate">¿Qué elementos de la escena parecen relacionarse?</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="num">05</span>
+            <span class="ttl"><b>El paso del tiempo</b><span>Cambio, historia, memoria.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir cambio, historia, memoria.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">texturas</span><span class="pista">capas visuales</span><span class="pista">contraste entre viejo y nuevo</span><span class="pista">repetición de elementos</span></div>
+            <p class="preguntate">¿Qué señales me muestran que el tiempo pasó por acá?</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="num">06</span>
+            <span class="ttl"><b>Algo que nadie mira</b><span>Descubrimiento, observación.</span></span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="acc-body">
+            <p>Buscás transmitir descubrimiento, observación.</p>
+            <div class="micro-label">Apoyate en</div>
+            <div class="pistas"><span class="pista">detalles</span><span class="pista">encuadres cerrados</span><span class="pista">marcos dentro del marco</span><span class="pista">cambios de altura y punto de vista</span></div>
+            <p class="preguntate">¿Qué estoy viendo que la mayoría pasaría por alto?</p>
+          </div>
+        </details>
+
       </div>
-    </div>
+    </section>
 
-    <div class="syll" id="syll-e2"></div>
-    <div class="mod-list" id="body-e2"></div>
+    <!-- ====== Puesta en comun ====== -->
+    <section>
+      <div class="sec-label">La puesta en común</div>
+      <h3>Una sola <em>pregunta</em></h3>
+      <p class="muted">Cuando mostrás tus fotos, respondés una sola cosa:</p>
+      <p class="pregunta-final">¿Qué decisión tomaste para que la imagen transmitiera esa idea?</p>
+      <p class="muted">Ahí dejás de hablar de <em>qué</em> fotografiaste y empezás a hablar de <em>por qué</em> la fotografiaste así. Ese es el corazón de la intención.</p>
+    </section>
 
-    <div class="cierre">
-      <div class="cierre-kick">Cierre del encuentro</div>
-      <h3>El primer encuadre casi nunca es el mejor.</h3>
-      <p>Es solo el más cómodo. Antes de irnos, armamos una serie corta sin editar usando solo decisiones de cámara y mirada: contexto, protagonista, detalle, un ángulo distinto y un cierre. Elegimos la más lograda y una para mejorar.</p>
-    </div>
-  </section>
+    <!-- ====== Tiempos sugeridos ====== -->
+    <section>
+      <div class="sec-label">Tiempos sugeridos · 2 h</div>
+      <h3>Cómo se reparte el <em>encuentro</em></h3>
+      <ul class="tiempos">
+        <li><span class="t">20 min</span><span class="d">Repaso y entrega de la consigna</span></li>
+        <li><span class="t">25 min</span><span class="d">Salida a la calle</span></li>
+        <li><span class="t">20 min</span><span class="d">Edición: elegir 3 a 5 fotos</span></li>
+        <li><span class="t">45 min</span><span class="d">Puesta en común y lectura de las series</span></li>
+        <li><span class="t">10 min</span><span class="d">Cierre</span></li>
+      </ul>
+    </section>
 
-  <!-- ════════════════ ENCUENTRO 3 ════════════════ -->
-  <section class="screen" id="s-e3">
-    <div class="eh">
-      <div class="eh-back" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Volver a los encuentros</div>
-      <div class="eh-kick">Encuentro 03 · Eje Intención</div>
-      <h1>Contar con <em>intención</em></h1>
-      <div class="eh-d">Una foto puede ser fuerte, pero una serie puede contar más. Llevamos todo a situaciones reales: personas, momentos cotidianos y una historia narrada en imágenes que se sienten conectadas.</div>
-      <div class="eh-meta">
-        <span class="hero-chip"><b>2 h</b></span>
-        <span class="hero-chip">Fotografía aplicada</span>
-        <span class="hero-chip">Storytelling</span>
+
+    <!-- ====== Cierre ====== -->
+    <section>
+      <div class="cierre">
+        <div class="rings"></div>
+        <div class="eyebrow">El cierre del encuentro</div>
+        <p class="quote">No se trata de acumular fotos, sino de elegir mejor.</p>
+        <p>Si te llevás una sola cosa de hoy, que sea esta: la cámara no decide por vos. <em>Vos</em> elegís qué mirar, qué dejar afuera y en qué orden contarlo. Eso es fotografiar con intención.</p>
       </div>
+
+      <!-- Vuelve a la app de Encuentros. Ajusta el ancla si tu app usa otro id. -->
+      <a class="back" href="https://clases-bice.vercel.app/#intencion">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Volver a Intención
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ====== Bottom nav (igual a la app de Encuentros) ======
+       Apunta a clases-bice.vercel.app. Ajusta las anclas si tu app usa otros id. -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://clases-bice.vercel.app/#inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>
+        Inicio
+      </a>
+      <a href="https://clases-bice.vercel.app/#luz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg>
+        Luz
+      </a>
+      <a href="https://clases-bice.vercel.app/#encuadre">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>
+        Encuadre
+      </a>
+      <a href="https://clases-bice.vercel.app/#intencion" class="active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"></circle></svg>
+        Intención
+      </a>
+      <a href="https://clases-bice.vercel.app/#contacto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"></path></svg>
+        Contacto
+      </a>
     </div>
+  </nav>
 
-    <div class="syll" id="syll-e3"></div>
-    <div class="mod-list" id="body-e3"></div>
-
-    <div class="cierre">
-      <div class="cierre-kick">Cierre del encuentro</div>
-      <h3>No se trata de acumular fotos, sino de elegir mejor.</h3>
-      <p>Cada imagen debe tener un motivo dentro de la serie. Compartimos resultados, comparamos decisiones y detectamos qué recurso mejoró cada imagen. Entender por qué una foto funciona mejor que otra es el verdadero aprendizaje.</p>
-    </div>
-  </section>
-
-  <!-- ════════════════ CONTACTO ════════════════ -->
-  <section class="screen" id="s-contacto">
-    <div class="eh" style="padding-bottom:6px"><h1>Contacto</h1></div>
-    <div class="contact-card">
-      <h2>Hablemos de fotografía</h2>
-      <p>Soy Natalia Olivera, fotógrafa y creadora de Amapola Fotografía. Si tenés dudas, querés sumarte a un taller o mostrarme tus fotos, escribime.</p>
-      <div class="clinks">
-        <a class="clink" href="https://wa.me/5492266549788?text=Hola%20Nat%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20taller" target="_blank" rel="noopener">
-          <span class="clink-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23s8.23 3.69 8.23 8.23-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg></span>
-          <span class="clink-tx"><b>WhatsApp</b><span>2266 549788</span></span>
-          <svg class="arr" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-        <a class="clink" href="https://instagram.com/amapolafotografia" target="_blank" rel="noopener">
-          <span class="clink-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#fff" stroke="none"/></svg></span>
-          <span class="clink-tx"><b>Instagram</b><span>@amapolafotografia</span></span>
-          <svg class="arr" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="about-sec">
-      <h3>Sobre el taller</h3>
-      <p>Un recorrido de tres encuentros para aprender los fundamentos de la luz, el encuadre y la intención. Todo lo que ves acá tiene su versión ampliada en la plataforma La Mirada Fotográfica, para que puedas seguir estudiando después de cada clase.</p>
-    </div>
-  </section>
-
-</main>
-
-<footer class="foot">
-  <div class="foot-inner">
-    <div class="foot-brand">Amapola</div>
-    <div class="foot-sub">Taller de fotografía móvil · Natalia Olivera</div>
-    <div class="foot-copy">© Amapola Fotografía 2026 · Material de clase</div>
-  </div>
-</footer>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <button class="ni on" data-s="home" onclick="go('home')">
-      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5"/></svg>
-      <span>Inicio</span>
-    </button>
-    <button class="ni" data-s="e1" onclick="go('e1')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
-      <span>Luz</span>
-    </button>
-    <button class="ni" data-s="e2" onclick="go('e2')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M9 5v14M15 5v14M3 9.5h18M3 14.5h18"/></svg>
-      <span>Encuadre</span>
-    </button>
-    <button class="ni" data-s="e3" onclick="go('e3')">
-      <svg viewBox="0 0 24 24"><path d="M3 13a9 9 0 0 1 18 0"/><circle cx="12" cy="13" r="3"/><line x1="12" y1="2" x2="12" y2="4"/></svg>
-      <span>Intención</span>
-    </button>
-    <button class="ni" data-s="contacto" onclick="go('contacto')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>
-      <span>Contacto</span>
-    </button>
-  </div>
-</nav>
-
-<script>
-/* ============================================================
-   DATOS DE LOS ENCUENTROS
-   Alineados con los ejes de La Mirada Fotográfica:
-   E1 = Luz · E2 = Encuadre · E3 = Intención
-   Cada módulo = una lámina. weblink = dónde ampliar en la app.
-   ============================================================ */
-
-var ENCUENTROS = {
-
-/* ─────────────────────────────────────────────
-   ENCUENTRO 1 · LUZ
-   ───────────────────────────────────────────── */
-e1:[
-  {name:'Mirar con intención', desc:'Qué es la fotografía — Las 3 preguntas',
-   web:'Fundamentos · Introducción y fundamentos',
-   topics:[
-    {t:'La foto empieza antes del botón', h:'<div class="tp">En este primer encuentro no buscamos la foto perfecta. Empezamos por aprender a <strong>mirar</strong>: reconocer qué tenemos delante, qué queremos mostrar y qué decisión tomamos antes de tocar el botón.</div><div class="tp">La fotografía no empieza cuando disparamos, sino cuando decidimos qué queremos contar. El celular enfoca y procesa, pero la mirada y la intención las ponés vos. Por eso dos personas en el mismo lugar, con el mismo teléfono, traen fotos completamente distintas.</div><div class="box"><div class="box-t">La gran verdad</div><div class="box-d">No necesitás la mejor cámara para hacer buenas fotos. Necesitás aprender a ver. Lo que cambia cada año es la tecnología; lo que no cambia son los principios: luz, composición, momento, intención.</div></div>'},
-    {t:'Las 3 preguntas antes de fotografiar', h:'<div class="tp">Una herramienta concreta para entrenar la mirada. Antes de cada foto, durante las primeras semanas, respondé estas tres preguntas. Después se vuelven automáticas.</div><ul class="tl"><li><strong>¿Qué?</strong> ¿Qué quiero mostrar? ¿Cuál es el sujeto principal?</li><li><strong>¿Cómo?</strong> ¿Desde dónde, con qué luz, a qué distancia?</li><li><strong>¿Para qué?</strong> ¿Qué quiero que sienta quien vea la foto?</li></ul><div class="weblink"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><div><b>En la app:</b> <span>Fundamentos → Las 3 preguntas antes de fotografiar</span></div></div>',},
-    {t:'La pausa consciente de 10 segundos', h:'<div class="tp">El hábito más simple y más transformador: detenerse. Antes de disparar, tomá 10 segundos para observar la escena. Son la diferencia entre disparar por impulso y fotografiar con decisión.</div>'}
-   ],
-   ej:{t:'Observar sin cámara', steps:['Elegí un rincón del lugar y mirálo 30 segundos sin levantar el celular.','Nombrá en una palabra el protagonista de esa escena.','Respondé en voz alta: ¿qué?, ¿cómo?, ¿para qué?'], q:'¿Pudiste nombrar el sujeto en una sola palabra? Si no, la escena tiene demasiadas cosas.'}
-  },
-
-  {name:'La luz', desc:'Natural y artificial — Suave y dura — Momentos del día',
-   web:'Eje 1 · Luz · La luz natural',
-   topics:[
-    {t:'La luz es el punto de partida', h:'<div class="tp">La luz es el pilar fundamental de la fotografía móvil. Antes de pensar en filtros o edición, observamos qué luz tenemos disponible y cómo aprovecharla. <strong>La luz es aproximadamente el 80% de una buena foto.</strong></div>'},
-    {t:'Luz suave vs luz dura', h:'<div class="tp">No se trata de cuánta luz hay, sino de cómo es esa luz. La misma cara, con luz suave o dura, cuenta historias opuestas.</div><table class="tbl"><tr><th></th><th>Suave</th><th>Dura</th></tr><tr><td>Cuándo</td><td>Nublado, sombra, ventana sin sol</td><td>Sol directo, mediodía</td></tr><tr><td>Produce</td><td>Sombras suaves, piel agradable</td><td>Sombras marcadas, contraste</td></tr><tr><td>Para</td><td>Retratos, comida, intimidad</td><td>Texturas, drama, fuerza</td></tr></table><div class="tp">La luz que entra por una ventana sin sol directo es, casi siempre, la mejor luz que vas a tener gratis.</div>'},
-    {t:'Cómo cambia la luz durante el día', h:'<ul class="tl"><li><strong>Mañana y tarde:</strong> luz baja, lateral y cálida. La favorita (hora dorada).</li><li><strong>Mediodía:</strong> luz dura desde arriba, sombras feas. Buscá sombra abierta.</li><li><strong>Nublado:</strong> un difusor gigante natural. Luz pareja, ideal para retratos.</li></ul>'}
-   ],
-   ej:{t:'Un sujeto, distintas luces', steps:['Elegí un objeto simple.','Fotografialo cerca de una ventana con luz suave.','Movelo a una zona de luz dura o sol directo.','Compará: ¿cuál transmite más calma?, ¿cuál más drama?'], q:'¿Notás cómo la misma cosa cambia de carácter solo por la luz?'}
-  },
-
-  {name:'Dirección de la luz', desc:'Frontal — Lateral — Contraluz — Cenital',
-   web:'Eje 1 · Luz · Dirección de la luz',
-   topics:[
-    {t:'De dónde viene la luz', h:'<div class="tp">La dirección de la luz transforma la sensación de una imagen. Una misma escena puede verse clara, con volumen, dramática o con sombras marcadas según desde dónde llegue la luz.</div><ul class="tl"><li><strong>Luz frontal:</strong> claridad y simpleza, pero aplana.</li><li><strong>Luz lateral:</strong> volumen y textura. La base del retrato.</li><li><strong>Contraluz:</strong> silueta o luz de borde. Muy expresiva.</li><li><strong>Luz cenital (arriba):</strong> sombras fuertes. Evitar en retratos.</li></ul>'}
-   ],
-   ej:{t:'Las cuatro direcciones', steps:['Fotografiá el mismo objeto o persona con luz frontal.','Repetí con luz lateral.','Probá a contraluz.','Probá con luz desde arriba.','Compará cuál se entiende mejor y cuál transmite más clima.'], q:'¿Cuál dirección cuenta mejor lo que querías mostrar?'}
-  },
-
-  {name:'Preparar el celular', desc:'Checklist — Cuadrícula — Sin filtros ni zoom',
-   web:'Herramientas · iPhone / Android',
-   topics:[
-    {t:'Antes de empezar a fotografiar', h:'<div class="tp">Muchas mejoras aparecen con acciones simples. Preparamos la herramienta antes de sacar fotos.</div><ul class="tl"><li>Limpiar la lente.</li><li>Usar la cámara trasera.</li><li>No usar filtros al inicio.</li><li>Activar la cuadrícula.</li><li>Evitar el zoom digital al comenzar.</li></ul>'},
-    {t:'Cómo activar la cuadrícula', h:'<ul class="tl"><li><strong>iPhone:</strong> Ajustes → Cámara → Cuadrícula.</li><li><strong>Android:</strong> Cámara → Ajustes (engranaje) → Cuadrícula o Líneas guía.</li></ul><div class="box"><div class="box-t">Por qué importa</div><div class="box-d">La cuadrícula te ayuda a aplicar la regla de tercios y a mantener el horizonte derecho. Dejala prendida siempre.</div></div>'}
-   ],
-   ej:{t:'Dejar el celular listo', steps:['Limpiá la lente con un paño suave.','Activá la cuadrícula siguiendo los pasos de tu modelo.','Desactivá cualquier filtro que esté puesto.'], q:'¿Tu celular ya quedó listo para trabajar sin distracciones?'}
-  },
-
-  {name:'Primera observación', desc:'La foto inicial de la escena',
-   web:'Eje 3 · Intención · Series (punto de partida)',
-   topics:[
-    {t:'La foto inicial como punto de partida', h:'<div class="tp">Antes de corregir o explicar demasiado, hacemos una foto inicial. Esta imagen funciona como punto de partida para comparar al final de la clase.</div><ul class="tl"><li>Sacá una foto de la escena sin corregir nada.</li><li>Sin filtros, sin zoom.</li><li>Guardá la imagen para comparar después.</li></ul><div class="box"><div class="box-t">Qué observar</div><div class="box-d">La luz · el protagonista · el fondo · el ángulo elegido.</div></div>'}
-   ],
-   ej:{t:'Tu foto "antes"', steps:['Elegí una escena del lugar que te llame la atención.','Sacá una sola foto, sin pensar demasiado.','Guardala. Será tu punto de comparación al cierre.'], q:'Anotá mentalmente: ¿qué creés que se puede mejorar de esta foto?'}
-  },
-
-  {name:'Enfoque y exposición', desc:'Tocar, decidir y ajustar la luz',
-   web:'Eje 1 · Luz · Compensación de exposición',
-   topics:[
-    {t:'El gesto más importante de todos', h:'<div class="tp">El celular enfoca y mide la luz automáticamente, pero podemos ayudarlo. <strong>Tocá la pantalla sobre el sujeto:</strong> aparece un cuadro (enfoque) y un sol al costado (exposición).</div><ul class="tl"><li>Deslizá el sol hacia arriba para aclarar, hacia abajo para oscurecer.</li><li>Mantené presionado para bloquear enfoque y exposición (AE/AF Lock).</li></ul><div class="box"><div class="box-t">La regla de oro</div><div class="box-d">Con este gesto resolvés el 90% de las situaciones difíciles de luz, sobre todo el contraluz, donde el celular tiende a dejar el sujeto oscuro.</div></div><div class="weblink"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><div><b>En la app:</b> <span>Eje Luz → Compensación de exposición y bloqueo</span></div></div>'}
-   ],
-   ej:{t:'Domar la luz a mano', steps:['Poné un sujeto contra una ventana (contraluz).','Sacá la foto sin tocar nada: mirá cómo queda oscuro.','Ahora tocá el sujeto y subí el sol.','Compará las dos versiones.'], q:'¿Cuál conserva mejor el detalle en el rostro?'}
-  }
-],
-
-/* ─────────────────────────────────────────────
-   ENCUENTRO 2 · ENCUADRE
-   ───────────────────────────────────────────── */
-e2:[
-  {name:'Volver a mirar', desc:'Punto de partida — Repaso activo de la luz',
-   web:'Repaso del Encuentro 01',
-   topics:[
-    {t:'Retomar lo aprendido para avanzar', h:'<div class="tp">El segundo encuentro empieza recuperando lo trabajado: mirar antes de disparar, reconocer la luz, cuidar el fondo, enfocar y ajustar la exposición desde el celular.</div><div class="tp">La cámara ofrece muchas funciones, pero la decisión principal sigue siendo visual: <strong>qué quiero mostrar y desde dónde conviene hacerlo.</strong></div>'}
-   ],
-   ej:{t:'Misma escena, tres decisiones', steps:['Elegí una escena simple del lugar.','Hacé una foto cuidando la luz.','Repetí cuidando el fondo.','Repetí cambiando el punto de vista.'], q:'¿Qué cambió cuando la decisión fue consciente?'}
-  },
-
-  {name:'Modos de cámara y lentes', desc:'Foto, retrato, macro, panorámica — 0.5x a 3x',
-   web:'Herramientas · iPhone / Android',
-   topics:[
-    {t:'El modo se elige por intención', h:'<div class="tp">Los modos no son efectos mágicos: son herramientas. La decisión no es usar un modo porque está disponible, sino porque ayuda a contar mejor.</div><ul class="tl"><li><strong>Foto:</strong> el más seguro para practicar luz y composición.</li><li><strong>Retrato:</strong> desenfoca el fondo. Necesita distancia y buena luz.</li><li><strong>Macro:</strong> detalles pequeños, texturas.</li><li><strong>Panorámica:</strong> espacios amplios.</li></ul>'},
-    {t:'Lentes y distancia', h:'<table class="tbl"><tr><th>Lente</th><th>Para qué</th></tr><tr><td><strong>0.5x</strong> gran angular</td><td>Más espacio, pero deforma si estás cerca</td></tr><tr><td><strong>1x</strong> principal</td><td>La opción más equilibrada. Recomendada</td></tr><tr><td><strong>2x / 3x</strong> tele</td><td>Acerca sin invadir. Favorece retratos</td></tr></table><div class="box"><div class="box-t">Clave</div><div class="box-d">Tocá los números para cambiar de lente; no pellizques la pantalla, porque eso es zoom digital y pierde calidad.</div></div>'}
-   ],
-   ej:{t:'Una escena, varios modos', steps:['Fotografiá una escena en modo foto normal.','Repetila en modo retrato, si tu celular lo permite.','Buscá un detalle y probá macro.','Compará si el modo elegido suma o distrae.'], q:'¿El modo realmente ayudó a la intención, o solo fue un efecto?'}
-  },
-
-  {name:'Tipos de planos', desc:'General, medio, primer plano, detalle',
-   web:'Eje 2 · Encuadre · Tipos de planos',
-   topics:[
-    {t:'El plano define la distancia narrativa', h:'<div class="tp">El plano no es solo "zoom": es decidir cuánta información necesita la imagen para entenderse. Variar los planos en una serie le da ritmo, como en el cine.</div><table class="tbl"><tr><th>Plano</th><th>Para qué sirve</th></tr><tr><td>General</td><td>Contexto, dónde ocurre</td></tr><tr><td>Medio</td><td>Relación con el entorno</td></tr><tr><td>Primer plano</td><td>Emoción, intimidad</td></tr><tr><td>Detalle</td><td>Textura, objeto, símbolo</td></tr></table>'}
-   ],
-   ej:{t:'Una historia en planos', steps:['Elegí una situación simple.','Hacé una foto general.','Una foto media.','Una foto de detalle.','Ordenalas: ¿cuentan algo juntas?'], q:'¿El plano guía lo que el espectador entiende primero?'}
-  },
-
-  {name:'Ángulos de cámara', desc:'Frontal, picado, contrapicado, a nivel',
-   web:'Eje 2 · Encuadre · Ángulos',
-   topics:[
-    {t:'La altura también comunica', h:'<div class="tp">La mayoría saca todo desde la misma altura, por eso la mayoría de las fotos se parecen. Cambiar el ángulo es la forma más rápida de hacer fotos distintas.</div><ul class="tl"><li><strong>Frontal:</strong> claro y directo.</li><li><strong>Picado (desde arriba):</strong> ordena mesas, comida, objetos.</li><li><strong>Contrapicado (desde abajo):</strong> da fuerza y protagonismo.</li><li><strong>A nivel del sujeto:</strong> cercanía. Clave con niños y mascotas.</li></ul>'}
-   ],
-   ej:{t:'La regla de los 3 ángulos', steps:['Elegí un objeto o persona.','Fotografiá frontal.','Desde arriba.','Desde abajo.','A la altura del sujeto.'], q:'El primer ángulo es el obvio; el tercero suele ser el interesante. ¿Cuál comunica mejor?'}
-  },
-
-  {name:'Composición práctica', desc:'Fondo limpio — Regla de los tercios — Líneas',
-   web:'Eje 2 · Encuadre · Regla de tercios y líneas',
-   topics:[
-    {t:'Componer también es limpiar', h:'<div class="tp">El fondo es tan importante como el sujeto, pero casi nadie lo mira antes de disparar. Un fondo cargado le quita fuerza al protagonista.</div><ul class="tl"><li>Mirá qué aparece detrás del sujeto.</li><li>Un paso al costado puede eliminar lo que distrae.</li><li>Alejá el sujeto del fondo para separarlo.</li></ul>'},
-    {t:'La regla de los tercios', h:'<div class="tp">El ojo no va al centro: va a los cuatro cruces de la cuadrícula. Ubicá ahí lo importante.</div><ul class="tl"><li>Activá la cuadrícula.</li><li>Probá una foto con el sujeto centrado.</li><li>Probá otra ubicándolo sobre una línea o un cruce.</li></ul><div class="weblink"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><div><b>En la app:</b> <span>Eje Encuadre → La regla de tercios · Líneas visuales</span></div></div>'},
-    {t:'Líneas que guían la mirada', h:'<div class="tp">Las líneas existen en toda escena y guían el ojo, lo quieras o no. Un camino, una mesa, una pared. Las que convergen a lo lejos crean profundidad.</div>'}
-   ],
-   ej:{t:'Centrado vs tercios', steps:['Elegí un sujeto con un fondo simple.','Sacá una foto con el sujeto justo en el centro.','Sacá otra ubicándolo sobre un cruce de la cuadrícula.','Buscá una línea del lugar que apunte al sujeto y usala.'], q:'¿Cuál versión respira mejor y guía tu mirada?'}
-  },
-
-  {name:'Recursos visuales', desc:'Líneas, simetría, reflejos, repeticiones, B&N',
-   web:'Eje 2 · Encuadre · Simetría y patrones',
-   topics:[
-    {t:'Elementos que ordenan la mirada', h:'<div class="tp">Además de los tercios, hay recursos simples que aparecen en la vida cotidiana y mejoran mucho una imagen.</div><ul class="tl"><li><strong>Líneas:</strong> dirigen la mirada.</li><li><strong>Simetría:</strong> equilibrio y calma.</li><li><strong>Reflejos:</strong> profundidad, dos mundos en una foto.</li><li><strong>Repeticiones:</strong> ritmo visual.</li><li><strong>Color:</strong> un color protagonista ordena la foto.</li><li><strong>Blanco y negro:</strong> cuando el color distrae.</li></ul>'}
-   ],
-   ej:{t:'Búsqueda visual', steps:['Buscá una línea que guíe la mirada.','Buscá una composición simétrica.','Buscá un reflejo.','Elegí una foto donde el color sea protagonista.'], q:'¿Qué recurso encontraste que no habías notado antes?'}
-  }
-],
-
-/* ─────────────────────────────────────────────
-   ENCUENTRO 3 · INTENCIÓN
-   ───────────────────────────────────────────── */
-e3:[
-  {name:'Repaso activo', desc:'Volver a mirar luz, encuadre e intención',
-   web:'Repaso de los Encuentros 01 y 02',
-   topics:[
-    {t:'Aplicar lo aprendido en situaciones reales', h:'<div class="tp">El tercer encuentro retoma todo: reconocer la luz, decidir el protagonista, ordenar el fondo y elegir desde dónde mirar. Esta vez con más libertad y decisiones más conscientes.</div><div class="tp">La pregunta de base sigue siendo la misma: antes de tocar el botón, <strong>¿qué quiero mostrar y cómo conviene mirarlo?</strong></div>'}
-   ],
-   ej:{t:'Defender una decisión', steps:['Elegí una foto de un encuentro anterior.','Contá qué decisión tomaste: luz, ángulo, encuadre o fondo.','Escuchá qué funcionó y qué podría mejorarse.'], q:'¿Podés explicar por qué tomaste esa decisión?'}
-  },
-
-  {name:'Retratos e intención', desc:'La confianza antes que la técnica',
-   web:'Eje 3 · Intención · Retratos',
-   topics:[
-    {t:'Fotografiar personas es un acto de confianza', h:'<div class="tp">Antes que la luz o el encuadre, lo que define un buen retrato es cómo se siente la persona frente a tu cámara. Una persona tensa da un retrato tenso.</div><div class="tp">El mejor retrato casi nunca es el más posado: es el del momento en que la persona se olvidó de la cámara.</div>'},
-    {t:'Cómo generar comodidad', h:'<ul class="tl"><li>Mostrales las fotos mientras sacás.</li><li>Hablá mientras fotografiás.</li><li>Pediles que hagan algo en lugar de "posar".</li><li>Evitá el "sonreí": la sonrisa pedida sale falsa.</li></ul><div class="weblink"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><div><b>En la app:</b> <span>Eje Intención → Cómo generar comodidad</span></div></div>'}
-   ],
-   ej:{t:'Un retrato sin pose', steps:['Elegí a un compañero.','En vez de "posá", pedile que haga algo (mirar por la ventana, sostener un objeto).','Hablá con él mientras sacás varias fotos.','Elegí la del momento más natural.'], q:'¿La mejor foto fue una posada o una de la transición?'}
-  },
-
-  {name:'Storytelling', desc:'Contar una historia con varias fotos',
-   web:'Eje 3 · Intención · Series',
-   topics:[
-    {t:'Una foto cuenta; una serie narra', h:'<div class="tp">En storytelling no buscamos repetir imágenes parecidas, sino construir una secuencia: contexto, acción, detalle y cierre. La serie tiene que sentirse conectada.</div><div class="box"><div class="box-t">La clave de una serie</div><div class="box-d">Coherencia visual: el mismo mundo, una luz consistente. Eso convierte fotos sueltas en una historia.</div></div>'}
-   ],
-   ej:{t:'Mini historia en 4 fotos', steps:['Elegí una situación real del espacio.','Foto de lugar (contexto).','Foto de acción o gesto.','Foto de detalle.','Foto de cierre.'], q:'Si alguien ve solo estas fotos, ¿entiende qué pasó?'}
-  },
-
-  {name:'Fotografía aplicada', desc:'Personas, momentos reales, escenas cotidianas',
-   web:'Eje 3 · Intención · Fotos cotidianas',
-   topics:[
-    {t:'Resolver con lo que hay', h:'<div class="tp">En la vida real muchas fotos no esperan. Practicamos adaptarnos: mirar rápido la luz, limpiar el fondo, acercarnos, elegir el ángulo y disparar sin cortar el momento.</div><div class="tp">La idea es resolver con lo que hay: el lugar, la luz disponible, el movimiento y el celular que cada uno tiene.</div>'}
-   ],
-   ej:{t:'Capturar sin posar', steps:['Hacé una pequeña recorrida por el lugar.','Observá antes de levantar el celular.','Esperá un gesto o interacción.','Capturá tres fotos espontáneas aplicando luz, encuadre y composición.'], q:'En lo espontáneo, anticiparse vale más que correr detrás de la foto. ¿Lo lograste?'}
-  },
-
-  {name:'Errores comunes', desc:'Qué arruina una buena foto y cómo resolverlo',
-   web:'Eje 2 · Encuadre · Fondos y chequeo',
-   topics:[
-    {t:'Detectar el problema antes de disparar', h:'<div class="tp">La mayoría de los errores se corrigen antes de tocar el botón, no en la edición.</div><table class="tbl"><tr><th>Error</th><th>Solución</th></tr><tr><td>Lente sucia</td><td>Limpiar con un paño</td></tr><tr><td>Fondo cargado</td><td>Moverse, cambiar ángulo</td></tr><tr><td>Zoom excesivo</td><td>Acercarse físicamente</td></tr><tr><td>Sujeto sin foco</td><td>Tocar para enfocar</td></tr><tr><td>Horizonte torcido</td><td>Usar la cuadrícula</td></tr></table>'}
-   ],
-   ej:{t:'Diagnóstico en parejas', steps:['Revisá dos fotos propias con un compañero.','Detectá un error o una mejora posible.','Repetí una de esas fotos corrigiendo ese punto.','Compará antes y después.'], q:'¿Qué decisión simple mejoró más la foto?'}
-  },
-
-  {name:'Desafío final', desc:'Una serie consciente de 5 fotos',
-   web:'Eje 3 · Intención · Proyecto: una serie',
-   topics:[
-    {t:'Integrar todo en una serie', h:'<div class="tp">El cierre integra todo: luz, modos, planos, ángulos, recursos visuales y narrativa. La serie debe mostrar una intención clara, aunque el tema sea simple.</div><div class="tp">No se trata de hacer muchas fotos, sino de elegir mejor. <strong>Cada imagen debe tener un motivo dentro de la serie.</strong></div>'}
-   ],
-   ej:{t:'Serie final de 5 fotos', steps:['Plano general (contexto).','Sujeto principal.','Detalle significativo.','Recurso visual o ángulo distinto.','Cierre de la historia.'], q:'Compartí la serie y explicá qué quisiste contar. ¿Cada foto tiene su motivo?'}
-  }
-]
-
-};
-
-/* ============================================================
-   RENDER
-   ============================================================ */
-function renderEncuentro(id){
-  var data=ENCUENTROS[id];
-  var cont=document.getElementById('body-'+id);
-  var syll=document.getElementById('syll-'+id);
-  if(!data||!cont) return;
-  cont.innerHTML='';
-  syll.innerHTML='';
-
-  // syllabus peek
-  data.forEach(function(mod,mi){
-    var row=document.createElement('div');
-    row.className='syll-row';
-    row.innerHTML='<div class="syll-n">'+String(mi+1).padStart(2,'0')+'</div><div class="syll-t">'+mod.name+'</div>';
-    row.onclick=function(){
-      var target=cont.children[mi];
-      if(target){ target.classList.add('open'); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-    };
-    syll.appendChild(row);
-  });
-
-  // módulos
-  data.forEach(function(mod,mi){
-    var modEl=document.createElement('div');
-    modEl.className='mod';
-    var num=String(mi+1).padStart(2,'0');
-
-    var head=document.createElement('div');
-    head.className='mod-head';
-    head.innerHTML='<div class="mod-num">'+num+'</div>'+
-      '<div class="mod-info"><div class="mod-name">'+mod.name+'</div>'+
-      '<div class="mod-desc">'+mod.desc+'</div></div>'+
-      '<div class="mod-toggle"></div>';
-    head.onclick=function(){ modEl.classList.toggle('open'); };
-    modEl.appendChild(head);
-
-    var body=document.createElement('div');
-    body.className='mod-body';
-    var inner=document.createElement('div');
-    inner.className='mod-inner';
-
-    // topics
-    (mod.topics||[]).forEach(function(tp){
-      var tpEl=document.createElement('div');
-      tpEl.className='topic';
-      var th=document.createElement('div');
-      th.className='topic-head';
-      th.innerHTML='<div class="topic-dot"></div>'+
-        '<div class="topic-title">'+tp.t+'</div>'+
-        '<svg class="topic-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
-      th.onclick=function(e){ e.stopPropagation(); tpEl.classList.toggle('open'); };
-      tpEl.appendChild(th);
-      var tb=document.createElement('div');
-      tb.className='topic-body';
-      tb.innerHTML='<div class="topic-content">'+tp.h+'</div>';
-      tpEl.appendChild(tb);
-      inner.appendChild(tpEl);
-    });
-
-    // ejercicio (siempre visible dentro del módulo abierto)
-    if(mod.ej){
-      var ej=document.createElement('div');
-      ej.className='ej';
-      var stepsHtml=mod.ej.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
-      ej.innerHTML='<div class="ej-tag">Práctica en clase</div>'+
-        '<div class="ej-t">'+mod.ej.t+'</div>'+
-        '<ul class="ej-steps">'+stepsHtml+'</ul>'+
-        (mod.ej.q?'<div class="ej-q">'+mod.ej.q+'</div>':'');
-      inner.appendChild(ej);
-    }
-
-    // referencia a la app (footer del módulo)
-    if(mod.web){
-      var wl=document.createElement('div');
-      wl.className='weblink';
-      wl.style.marginTop='4px';
-      wl.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>'+
-        '<div><b>Ampliar en la plataforma</b><br><span>'+mod.web+'</span></div>';
-      inner.appendChild(wl);
-    }
-
-    body.appendChild(inner);
-    modEl.appendChild(body);
-    cont.appendChild(modEl);
-  });
-}
-
-/* ---------- NAVEGACIÓN ---------- */
-function go(screen){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s-'+screen).classList.add('active');
-  // nav highlight: home/e1/e2/e3/contacto
-  document.querySelectorAll('.ni').forEach(n=>n.classList.toggle('on', n.dataset.s===screen));
-  window.scrollTo({top:0,behavior:'instant'});
-}
-
-/* ---------- INIT ---------- */
-(function init(){
-  renderEncuentro('e1');
-  renderEncuentro('e2');
-  renderEncuentro('e3');
-})();
-
-</script>
 </body>
 </html>
