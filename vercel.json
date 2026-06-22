@@ -1,6 +1,6 @@
 {
-  "buildCommand": "echo 'Static HTML'",
-  "outputDirectory": ".",
-  "public": false,
-  "framework": null
+  "buildCommand": "echo 'HTML estático'",
+  "directorio de salida": ".",
+  "estructura": nulo
 }
+
